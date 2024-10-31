@@ -7,20 +7,35 @@ import { IITadminModule } from './iitadmin/iitadmin.module';
 import { ResultsModule } from './results/results.module';
 import { IITadmin } from './iitadmin/entities/iitadmin.entity';
 import { AuthModule } from './auth/auth.module';
+import { Type } from 'class-transformer';
 
 @Module({
+  // imports: [
+  //   TypeOrmModule.forRoot({
+  //     type: 'postgres',
+  //     host: 'dpg-csi02m3gbbvc73f99kh0-a.onrender.com',
+  //     port: 5432,
+  //     username: 'iitbackend_user',
+  //     password: '5xlZDilpugF6Bx42I4riDU1HSriERUvM',
+  //     database: 'iitbackend',
+  //     entities: [IITadmin],
+  //     synchronize: true,
+  //     ssl: {
+  //       rejectUnauthorized: false, // Disable SSL certificate validation
+  //     },
+  //   }),
+  //   IITadminModule,
+  //   ResultsModule,
+  //   AuthModule,
+  // ],
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'dpg-csi02m3gbbvc73f99kh0-a.onrender.com',
-      port: 5432,
-      username: 'iitbackend_user',
-      password: '5xlZDilpugF6Bx42I4riDU1HSriERUvM',
-      database: 'iitbackend',
+      url: 'postgresql://iitbackend_user:5xlZDilpugF6Bx42I4riDU1HSriERUvM@dpg-csi02m3gbbvc73f99kh0-a.oregon-postgres.render.com/iitbackend',
       entities: [IITadmin],
-      synchronize: true,
+      synchronize: false,
       ssl: {
-        rejectUnauthorized: false, // Disable SSL certificate validation
+        rejectUnauthorized: false,
       },
     }),
     IITadminModule,
