@@ -12,13 +12,16 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'dpg-csi02m3gbbvc73f99kh0-a.onrender.com',
       port: 5432,
-      username: 'postgres',
-      password: '@Esan0234',
-      database: 'IITbackend',
+      username: 'iitbackend_user',
+      password: '5xlZDilpugF6Bx42I4riDU1HSriERUvM',
+      database: 'iitbackend',
       entities: [IITadmin],
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false, // Disable SSL certificate validation
+      },
     }),
     IITadminModule,
     ResultsModule,
@@ -30,3 +33,10 @@ import { AuthModule } from './auth/auth.module';
 export class AppModule {
   constructor(private dataSource: DataSource) {}
 }
+// type: 'postgres',
+//       host: 'localhost',
+//       port: 5432,
+//       username: 'postgres',
+//       password: '@Esan0234',
+//       database: 'IITbackend',
+//       entities: [IITadmin],

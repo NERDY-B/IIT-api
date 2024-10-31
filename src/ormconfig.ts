@@ -3,12 +3,15 @@ import { IITadmin } from './iitadmin/entities/iitadmin.entity';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost',
+  host: 'dpg-csi02m3gbbvc73f99kh0-a.onrender.com',
   port: 5432,
-  username: 'postgres',
-  password: '@Esan0234',
-  database: 'IITbackend',
+  username: 'iitbackend_user',
+  password: '5xlZDilpugF6Bx42I4riDU1HSriERUvM',
+  database: 'iitbackend',
   entities: [IITadmin],
+  ssl: {
+    rejectUnauthorized: false, // Disable SSL certificate validation
+  },
 });
 
 AppDataSource.initialize()
