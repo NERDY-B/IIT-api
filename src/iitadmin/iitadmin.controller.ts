@@ -10,6 +10,7 @@ import {
   ValidationPipe,
   UseGuards,
   Req,
+  Logger,
 } from '@nestjs/common';
 import { IITadminService } from './iitadmin.service';
 import { CreateIITadminDto } from './dto/create-iitadmin.dto';
@@ -21,14 +22,23 @@ import { CreateStudentDto } from './dto/create-student.dto';
 
 @Controller('iitadmin')
 export class IITadminController {
-  constructor(private readonly iitadminService: IITadminService) {}
+  constructor(
+    private readonly iitadminService: IITadminService,
+    private logger = new Logger(IITadminController.name),
+  ) {}
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async create(
-    @Body() createIITadminDto: CreateIITadminDto,
-  ): Promise<IITadmin> {
-    return await this.iitadminService.createIITadmin(createIITadminDto);
+  async create(@Body() createIITadminDto: CreateIITadminDto): Promise<any> {
+    try {
+      return await this.iitadminService.createIITadmin(createIITadminDto);
+    } catch (error) {
+      this.logger.error('something went wrong', error);
+      return {
+        msg: error.message,
+        stack: error.stack,
+      };
+    }
   }
 
   @Get('staffs')
