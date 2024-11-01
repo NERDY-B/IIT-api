@@ -17,6 +17,7 @@ const AppDataSource = new DataSource({
   type: 'postgres',
   url: 'postgresql://iitbackend_user:5xlZDilpugF6Bx42I4riDU1HSriERUvM@dpg-csi02m3gbbvc73f99kh0-a.oregon-postgres.render.com/iitbackend',
   entities: [IITadmin],
+  migrations: [__dirname + '/migration/*{.ts,.js}'],
   ssl: {
     rejectUnauthorized: false,
   },
