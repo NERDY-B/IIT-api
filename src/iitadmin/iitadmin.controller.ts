@@ -22,10 +22,8 @@ import { CreateStudentDto } from './dto/create-student.dto';
 
 @Controller('iitadmin')
 export class IITadminController {
-  constructor(
-    private readonly iitadminService: IITadminService,
-    private logger = new Logger(IITadminController.name),
-  ) {}
+  private logger = new Logger(IITadminController.name);
+  constructor(private readonly iitadminService: IITadminService) {}
 
   @Post()
   @UsePipes(new ValidationPipe())
