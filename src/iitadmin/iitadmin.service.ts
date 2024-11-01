@@ -36,9 +36,7 @@ export class IITadminService {
     const inputFields = await this.IITadminRepository.findOne({
       where: [
         {
-          name: createIITadminDto.name,
           email: createIITadminDto.email,
-          office: createIITadminDto.office,
         },
       ],
     });
